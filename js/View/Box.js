@@ -148,6 +148,13 @@
 				s.v.removeClass(self.placeHolder,"hide");
 				s.v.addClass(self.sourceHolder,"hide");
 				break;
+			case "shuffle":
+				var bool = confirm("You will lose current game state. Are you sure?");
+				if(bool){
+					s.generateGame();
+					s.initGame();
+				}
+				break;
 			}
 		};
 		

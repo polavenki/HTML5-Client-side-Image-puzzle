@@ -111,9 +111,9 @@
 	};
 	
 	s.v.addHandler(w,"load",function(){
+		s.timerDiv = s.v.getEl("timeElapsed");
 		if(!('ontouchstart' in document.documentElement) && s.isMobile) 
 			alert("Your mobile web browser is not HTML5 touch compatible, Dragging feature wouldn't work");
-		s.generateGame();
 		s.attachDragNDrop();
 	});
 	
