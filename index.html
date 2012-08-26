@@ -6,8 +6,10 @@
 	<title>HTML5 Client side Image puzzle</title>
 	<style>
 		#uploadContainer{width: 300px; height: 300px; margin: 20px auto; border: 3px dashed #ccc; text-align: center; background-color : #4D6C81;color : white;}
-		#mainContent{width: 500px;margin: 20px auto;}
+		#mainContent{margin: 20px auto;}
+		.gameBoard{width: 500px;margin: 20px auto;}
 		#source_holder{width: 500px; height: 500px;background-size:500px 500px;clear:both;}
+		#helpText{clear:both;}
 		.button{width : 100px; height: 30px;text-align:center;margin-bottom:5px; cursor:pointer;line-height:30px;margin-right:10px;background-color : #4D6C81;color : white;border-radius:5px;float:left;}
 		#slider{clear:both;}
 		.hide{display:none;}
@@ -16,6 +18,7 @@
 		.floatRight{ float : right;}
 		.tile{ width: 125px; height: 125px;background-size:500px 500px;}
 		.timeCount{font-weight: bold;color: #4D6C81;height:30px;width : 100px;line-height:30px;}
+		.onHover{ -webkit-transform: scale(1.2); -o-transform: scale(1.2); -moz-transform: scale(1.2); }
 		.tile.tile00{background-position: 0px 0px;}
 		.tile.tile01{background-position: -125px 0px;}
 		.tile.tile02{background-position: -250px 0px;}
@@ -48,8 +51,14 @@
 </head>
 <body>
 <div id="mainContent" class="hide">
+
+<div class="gameBoard">
 <div id="source" class="button" onclick="slider.helpclick('source');">Source</div><div id="game" onclick="slider.helpclick('game');" class="button">Game</div><div id="shuffle" onclick="slider.helpclick('shuffle');" class="button">Shuffle</div><span id="timeElapsed" class="floatRight timeCount"></span>
-<div id="source_holder" class="hide"></div><div id="slider"></div><div id="solution_holder" class="hide"></div><div id="previewDrag"></div>
+</div>
+<div class="gameBoard">
+<div id="source_holder" class="hide"></div><div id="slider"></div><div id="previewDrag"></div>
+</div>
+<div id="helpText"></div>
 </div>
 <div id="uploadContainer">
 

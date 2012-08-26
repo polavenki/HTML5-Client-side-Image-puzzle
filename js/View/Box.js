@@ -28,6 +28,22 @@
 				for(var j = 0 ; j < s.c.sliderSize ; j++){
 					var ele = s.v.createEl("div", { id : "box"+i+j , className : "tile "+s.m.state[i][j]+" floatleft" });
 					
+					
+					
+					
+					s.v.addHandler(ele,"mouseover",function(ele,x,y){
+						return function(){
+							var data = s.c.isMovelLegal(x,y);
+							(self.isDragged==false && data["isLegal"]===true && !s.isMobile) && s.v.addClass(ele,"onHover");
+						};
+					}(ele,i,j));
+					
+					s.v.addHandler(ele,"mouseout",function(ele,x,y){
+						return function(){
+							s.v.removeClass(ele,"onHover");	
+						};
+					}(ele,i,j));
+					
 					s.v.addHandler(ele, "click",function(x,y){
 						return function(){
 							s.log("isDragged="+self.isDragged,"info");
