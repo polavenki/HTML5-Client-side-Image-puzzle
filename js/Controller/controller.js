@@ -40,7 +40,7 @@
 		// Swap the tiles in the UI
 		s.v.puzzle.swapTiles(previousEmptyRef ,direction , displacement);
 	
-		(s.m.state.join()===s.m.solution.join()) && alert("You won the game !!!");
+		(s.m.state.join()===s.m.solution.join()) && alert("Great!! You won the game and the elapsed time is "+s.timerDiv.innerHTML);
 		
 	};
 	

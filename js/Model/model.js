@@ -7,6 +7,7 @@
 
 	s.m.emptyTile = "tile33";
 	s.m.tileSize = 125;
+
 	s.m.emptyRef = {"x" : 1 , "y" : 0};
 	s.m.state =	[["tile11","tile02","tile21","tile32"],
 	               ["tile33","tile13","tile12","tile30"],
