@@ -19,6 +19,17 @@
 		this.dragThreshold = 5;	//mouse should move minimum this distance before we declare drag.
 		
 		
+		var getTargetEle = function(e){
+			
+			var ele;
+			if (e.touches && e.touches.length) { 
+				ele = e.touches[0].target;
+			} else {
+				ele = (e.target || e.srcElement);
+			}
+			return ele;
+		};
+		
 		var getTargetId = function(e) {
 			var id;
 			if (e.touches && e.touches.length) { 
@@ -86,6 +97,9 @@
 				s.v.cancelEvent(e);
 				s.v.stopEventPropogation(e);
 			}
+			self.targetEle = getTargetEle(e);
+			self.doCallback("mousedown");
+			
 			
 		};
 		
@@ -128,6 +142,7 @@
 				self.dragStarted = true;
 				self.doCallback("dragstart");
 				self.dragSourceId = getTargetId(e);
+				
 			}else if(!self.dragStarted){
 				return s.v.cancelEvent(e);	//ignore mouse move till we reach threshold
 			}
@@ -140,7 +155,7 @@
 				
 		this.doCallback = function(eventName,data){
 			if(self.callback && typeof self.callback == "function"){
-				self.callback.call(self.ele, eventName, {"startX": self.startX, "lastX": self.lastX, "startY": self.startY, "lastY": self.lastY,"clientX" : self.clientX,"clientY" : self.clientY} , data);
+				self.callback.call(self.ele, eventName, {"startX": self.startX, "lastX": self.lastX, "startY": self.startY, "lastY": self.lastY,"clientX" : self.clientX,"clientY" : self.clientY} , data,self.targetEle);
 			}
 		};
 		

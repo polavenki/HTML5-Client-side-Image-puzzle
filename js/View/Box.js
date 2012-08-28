@@ -52,7 +52,11 @@
 								return;
 							}
 							var data = s.c.isMovelLegal(x,y);
-							(data["isLegal"]===true) && s.c.swap({"x" : x , "y" : y} , data["direction"], data["displacement"]);  
+							if(data["isLegal"]===true){
+								s.v.removeClass(ele,"onHover");
+								s.c.swap({"x" : x , "y" : y} , data["direction"], data["displacement"]);
+							}  
+							
 						};	
 					}(i,j));  // Adding the click listener
 
@@ -83,8 +87,10 @@
 		this.makeDraggable = function(tile , dragData){
 
 			var clone = null, actualDistance = 0 , draggedDistance =0 , swapInfo ={},lowx = 0 ,lowy =0  , upperx=0 , uppery=0;
-			new s.v.Drag(tile, function(eventName, coOrdinates , eventData){
-				if(eventName == "dragstart"){
+			new s.v.Drag(tile, function(eventName, coOrdinates , eventData,targetEle){
+				if(eventName == "mousedown"){
+					s.v.removeClass(targetEle,"onHover");
+				}else if(eventName == "dragstart"){
 					clone = s.v.createEl("div", {"className": "buddy_drag_clone"});
 					var noOfTilesToMove  = swapInfo["displacement"] , tempx = dragData["x"],  tempy = dragData["y"];
 					noOfTilesToMove = (swapInfo["displacement"] < 0) ? swapInfo["displacement"] * -1 : swapInfo["displacement"];
